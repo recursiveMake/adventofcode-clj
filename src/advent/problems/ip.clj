@@ -1,5 +1,6 @@
 (ns advent.problems.ip
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [clojure.set :as set]))
 
 (defn repeats?
   [sequence]
@@ -53,7 +54,7 @@
 (defn ssl?
   [address]
   (def ip-map (ip address))
-  (> (count (clojure.set/intersection
+  (> (count (set/intersection
              (into #{} (map bab (aba (:ip ip-map))))
              (into #{} (aba (:hypernet ip-map)))))
      0))
