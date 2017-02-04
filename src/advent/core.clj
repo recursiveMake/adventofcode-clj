@@ -7,7 +7,8 @@
             [advent.problems.hash :as hash]
             [advent.problems.ip :as ip]
             [advent.problems.tfa :as tfa]
-            [advent.problems.compress :as compress])
+            [advent.problems.compress :as compress]
+            [advent.problems.bot :as bot])
   (:gen-class))
 
 ;; Check associated Python solution
@@ -125,6 +126,29 @@
   []
   (reduce + (map compress/line-length (read-file "resources/problem-9.txt"))))
 
+(defn problem-10-a
+  []
+  (let [instructions (read-file "resources/problem-10.txt")
+        [rules state-0] (reduce bot/start-position [{} {}] instructions)]
+    (loop [state state-0]
+      (let [ready (bot/next-ready state)]
+        (if (= nil ready)
+          nil
+          (if (= #{61 17} (get state ready))
+            ready
+            (recur (bot/move-node ready rules state))))))))
+
+(defn problem-10-b
+  []
+  (def final-state (let [instructions (read-file "resources/problem-10.txt")
+                         [rules state-0] (reduce bot/start-position [{} {}] instructions)]
+                     (loop [state state-0]
+                       (let [ready (bot/next-ready state)]
+                         (if (= nil ready)
+                           state
+                           (recur (bot/move-node ready rules state)))))))
+  (reduce * (flatten (map #(seq (second %)) (select-keys final-state ["output 0" "output 1" "output 2"])))))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
@@ -143,4 +167,6 @@
   (println "Problem 8A: " (problem-8-a))
   (println "Problem 8B: " (problem-8-b))
   (println "Problem 9A: " (problem-9-a))
-  (println "Problem 9B: " (problem-9-b)))
+  (println "Problem 9B: " (problem-9-b))
+  (println "Problem 10A: " (problem-10-a))
+  (println "Problem 10B: " (problem-10-b)))
