@@ -1,36 +1,18 @@
 # advent
 
-FIXME: description
+Clojure solutions to 2016 [Advent of Code](https://adventofcode.com) problems
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Download from [GitHub](https://github.com/recursiveMake/adventofcode-clj)
+
+Build with `lein uberjar`
 
 ## Usage
 
-FIXME: explanation
+    $ java -jar advent-0.1.0-standalone.jar
 
-    $ java -jar advent-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2016 FIXME
+Copyright © 2017
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

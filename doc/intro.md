@@ -1,3 +1,5 @@
 # Introduction to advent
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+Solutions to Advent of Code problems in Clojure
+
+Modify resources/problem-X.txt to change the puzzle input.
